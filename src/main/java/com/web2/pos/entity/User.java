@@ -1,22 +1,21 @@
 package com.web2.pos.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author Abdul Rozak
  * @since 10/27/20
  */
-@Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class User {
 
     @Id
@@ -29,9 +28,13 @@ public class User {
 
     private Integer role;
 
-    private Long createdAt;
+    @Version
+    private Long version;
+
+    @CreatedDate
+    private Date createdAt;
 
     @LastModifiedDate
-    private Long updatedAt;
+    private Date updatedAt;
 
 }
